@@ -1,52 +1,41 @@
-<div>
-  <div>
-    <h1>
-      <%= @the_board.name %>
-    </h1>
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light"><%=@the_board.name%></h1>
+
+      <% if current_user != nil %>
+        <form action="/insert_post" method="post">
+          <div class="mb-3">
+            <label for="title_box" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title_box" name="query_title">
+          </div>
+          <div class="mb-3">
+            <label for="body_box" class="form-label">Body</label>
+            <textarea class="form-control" id="body_box" name="query_body"></textarea>
+
+          </div>
+          <div class="mb-3">
+
+            <div class="md-form md-outline input-with-post-icon datepicker" id="date-picker-example" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="date-picker-example_root">
+              <label class="form" for="expires_on_box" >Expires on</label>
+              <input placeholder="Select date" type="date" id="expires_on_box" class="form-control picker__input">
+            </div>
+
+          </div>
+
+          <input type="hidden" id="board_id_box" name="query_board_id" value="<%= @the_board.id %>">
+
+          <button type="submit" class="btn btn-primary">Add a New Post</button>
+        </form>
+      <%else%>
+
+        <p class="lead text-body-secondary">Must be <a href="/users/sign_in">signed in</a> to add a new post.</p>
+
+      <%end%>
+    </p>
   </div>
 </div>
-
-<hr>
-
-<h2>
-  Add a new post
-</h2>
-
-<% if current_user != nil %>
-<form action="/insert_post" method="post">
-  <div>
-    <label for="title_box">
-      Title
-    </label>
-
-    <input type="text" id="title_box" name="query_title">
-  </div>
-
-  <div>
-    <label for="body_box">
-      Body
-    </label>
-
-    <textarea id="body_box" name="query_body" rows="3"></textarea>
-  </div>
-
-  <div>
-    <label for="expires_on_box">
-      Expires on
-    </label>
-
-    <input type="date" id="expires_on_box" name="query_expires_on">
-  </div>
-
-  <input type="hidden" id="board_id_box" name="query_board_id" value="<%= @the_board.id %>">
-
-  <button>
-    Add post
-  </button>
-</form>
-<%else%>
-<p>Must be <a href="/users/sign_in">signed in</a> to add a new board.</p>
-<%end%>
+</section>
 
 <hr>
 

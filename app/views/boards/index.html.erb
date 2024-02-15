@@ -24,20 +24,16 @@
 
 <!-- List of boards-->
 
-<ul class="list-group">
+<div class="list-group">
   <% @list_of_boards.each do |a_board| %>
-    <li class="list-group-item d-flex justify-content-between align-items-start">
-      <div class="ms-2 me-auto">
-        <div class="fw-bold"><a href="/boards/<%= a_board.id %>">
-            <%= a_board.name %>
-          </a></div>
-        <div>
+    <a href="/boards/<%= a_board.id %>" class="list-group-item list-group-item-action fw-bold">
+      <%= a_board.name %>
+      <div style="font-weight: normal;">
 
-          <% matching_users = User.where({ :id => a_board.user_id }) %>
-          <% the_user = matching_users.at(0)%>
-          Owner: <%= the_user.email %>
-        </div>
+        <% matching_users = User.where({ :id => a_board.user_id }) %>
+        <% the_user = matching_users.at(0)%>
+        Owner: <%= the_user.email %>
       </div>
-    </li>
+    </a>
   <%end%>
-</ul>
+</div>
