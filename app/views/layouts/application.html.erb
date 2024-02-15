@@ -8,24 +8,38 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+     <!-- Connect Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+
+    <!-- Connect Bootstrap JavaScript and its dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Connect Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
   </head>
 
   <body>
-    <nav>
-      <a href="/">Bulletin Board</a>
 
-      <% if current_user != nil  %>   <!-- check if cookie is nil or if there is a user_id / current user checks the cookie for us-->
-        <a href="/users/sign_out">Sign out</a>
-        <a href="/users/edit">Edit profile</a>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Bulletin Board</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <% if current_user != nil  %>   <!-- check if cookie is nil or if there is a user_id / current user checks the cookie for us-->
+        <a class="nav-link" href="/users/sign_out">Sign out</a>
+        <a class="nav-link" href="/users/edit">Edit profile</a>
       <% else %>
-        <a href="/users/sign_up">Sign up</a>
-        <a href="/users/sign_in">Sign in</a>
+        <a class="nav-link" href="/users/sign_up">Sign up</a>
+        <a class="nav-link" href="/users/sign_in">Sign in</a>
       <%end%>
-
-      
+          </div>
+        </div>
+      </div>
     </nav>
-
-    <hr>
 
     <% if notice.present? %>
       <div style="color: green">
