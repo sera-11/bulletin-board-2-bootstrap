@@ -75,7 +75,7 @@ end
 # ===========
 gem "appdev_support"
 gem "awesome_print"
-gem "devise"       # to be removed
+gem "devise"       # to be removed  #in bash: rails g devise:views -b form_for #to add views
 gem "dotenv-rails"
 gem "faker"
 gem "htmlbeautifier"
